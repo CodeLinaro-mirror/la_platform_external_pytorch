@@ -1,0 +1,20 @@
+python_library_host {
+    name: "torchgen_library",
+    srcs: [
+        "**/*.py",
+    ],
+    pkg_path: "torchgen",
+    apex_available: ["com.android.ondevicepersonalization"],
+    libs: [
+        "pyyaml",
+        "typing_extensions",
+    ],
+}
+
+python_binary_host {
+    name: "torchgen_executorch",
+    main: "gen_executorch.py",
+    srcs: ["gen_executorch.py"],
+    apex_available: ["com.android.ondevicepersonalization"],
+    libs: ["torchgen_library"],
+}
